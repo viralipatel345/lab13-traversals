@@ -117,35 +117,17 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	//Print the current node first and then recurse on the children
 	public void preOrder() {
 		preOrderRecurse(root);
-		//System.out.println("Preorder test commit"); 
+		System.out.println("Preorder test commit"); 
 	}
 	
 	private void preOrderRecurse(BSTNode<T> node) {
-		if (node == null) {
-			return;
-		}
-		System.out.println(node.data + ""); 
-		preOrderRecurse(node.leftChild);
-		preOrderRecurse(node.rightChild);
+		
 	}
 	
 	//Traverse the tree in an preorder fashion but using a stack
 	//Print the current node first and then recurse on the children
 	public void preOrderStack() {
 		Stack<BSTNode<T>> pre = new Stack<BSTNode<T>>();
-		pre.push(root);
-		
-		while (pre.isEmpty()) {
-			BSTNode current = pre.pop();
-			System.out.println("%s " + current.data);
-			
-			if (current.rightChild != null) {
-				pre.push(current.rightChild);
-			}
-			if (current.leftChild != null) {
-				pre.push(current.leftChild);
-			}
-		}
 		
 	}
 		
@@ -160,10 +142,11 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	}
 	
 	public void inOrderRecurse(BSTNode<T> node) {
+
 		if(node.leftChild != null) {
 			inOrderRecurse(node.leftChild);
 		}
-		System.out.println(node.data);
+		System.out.print(node.data + " ");
 		if(node.rightChild != null) {
 			inOrderRecurse(node.rightChild);
 		}
@@ -171,8 +154,16 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	//Traverse the tree in an inorder fashion but using a stack
 	public void inOrderStack() {
 		Stack<BSTNode<T>> in = new Stack<BSTNode<T>>();
-		
-		
+	    BSTNode<T> curr = root;
+	  	while (curr != null || in.size() > 0) {
+	  		while (curr != null) {
+	  			in.push(curr);
+	  			curr = curr.leftChild;
+	  			}
+	  		curr = in.pop();
+	  		System.out.print(curr.data + " ");	  		
+	  		curr = curr.rightChild;
+}	
 	}
 	
 	//Traverse the tree in an postorder fashion
@@ -200,15 +191,15 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		if(root!=null) {
 			postHelper.push(root);
 			while(!postHelper.isEmpty()) {
-				BSTNode<T> current = postHelper.pop();
-				post.push(current);
-				if (current.leftChild != null) {	
-					post.push(current.leftChild);
+				//how should post and postHelper be updated?
+				root = postHelper.pop();
+				post.push(root);
+				if (root.leftChild != null) {
+					postHelper.push(root.leftChild);
 				}
-				if (current.rightChild != null) {
-					post.push(current.rightChild);
+				if (root.rightChild != null) {
+					postHelper.push(root.rightChild);
 				}
-				
 				
 			}
 			
