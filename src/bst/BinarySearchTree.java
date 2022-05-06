@@ -117,21 +117,38 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	//Print the current node first and then recurse on the children
 	public void preOrder() {
 		preOrderRecurse(root);
-		System.out.println("Preorder test commit"); 
+		//System.out.println("Preorder test commit"); 
 	}
 	
 	private void preOrderRecurse(BSTNode<T> node) {
-		
+		if (node == null) {
+			return;
+		}
+		System.out.printf("%s ", node.data);
+		preOrderRecurse(node.leftChild);
+		preOrderRecurse(node.rightChild);
 	}
 	
 	//Traverse the tree in an preorder fashion but using a stack
 	//Print the current node first and then recurse on the children
 	public void preOrderStack() {
 		Stack<BSTNode<T>> pre = new Stack<BSTNode<T>>();
+		pre.push(root);
 		
+		while (!pre.isEmpty()) {
+		BSTNode current = pre.pop();
+		
+		System.out.print(current.data + " ");
+		if (current.rightChild!=null) {
+			pre.push(current.rightChild);
+		}
+		
+		if (current.leftChild!=null) {
+			pre.push(current.leftChild);
+		}
 	}
 		
-
+	}
 	//Traverse the tree in an inorder fashion
 	//Recursively print the left side of the current node, then the current node, 
 	//then recursively print the right side of current node
@@ -152,7 +169,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		}
 	}
 	//Traverse the tree in an inorder fashion but using a stack
-	public void inOrderStack() {
+	public void inOrderStack() {//why no show up
 		Stack<BSTNode<T>> in = new Stack<BSTNode<T>>();
 	    BSTNode<T> curr = root;
 	  	while (curr != null || in.size() > 0) {
@@ -163,7 +180,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	  		curr = in.pop();
 	  		System.out.print(curr.data + " ");	  		
 	  		curr = curr.rightChild;
-}	
+	  		}	
 	}
 	
 	//Traverse the tree in an postorder fashion
@@ -246,6 +263,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		System.out.println("Pre Order Traversals");
 		bst.preOrder();
 		System.out.println();
+		System.out.println("Preorder Stack method");
 		bst.preOrderStack();
 		System.out.println();
 		System.out.println("Post Order Traversals");
