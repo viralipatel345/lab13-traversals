@@ -150,7 +150,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		if(node.leftChild != null) {
 			inOrderRecurse(node.leftChild);
 		}
-		System.out.println(node.data);
+		System.out.print(node.data + " ");
 		if(node.rightChild != null) {
 			inOrderRecurse(node.rightChild);
 		}
