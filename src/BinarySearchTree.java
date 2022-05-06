@@ -1,4 +1,4 @@
-package src.bst;
+package src;
 
 import java.util.Stack;
 
