@@ -1,4 +1,8 @@
+<<<<<<< HEAD:src/bst/BinarySearchTree.java
 package bst;
+=======
+package src;
+>>>>>>> 75055cf2cdf7b1d54c294e7484c410afbd08cf1d:src/BinarySearchTree.java
 
 import java.util.Stack;
 
