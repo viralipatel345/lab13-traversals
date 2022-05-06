@@ -1,4 +1,4 @@
-package src.bst;
+package bst;
 
 import java.util.Stack;
 
@@ -267,4 +267,5 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	
 
 }
+
 
