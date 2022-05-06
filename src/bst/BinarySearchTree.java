@@ -1,4 +1,4 @@
-package bst;
+package src.bst;
 
 import java.util.Stack;
 
@@ -160,7 +160,13 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	}
 	
 	public void inOrderRecurse(BSTNode<T> node) {
-		
+		if(node.leftChild != null) {
+			inOrderRecurse(node.leftChild);
+		}
+		System.out.println(node.data);
+		if(node.rightChild != null) {
+			inOrderRecurse(node.rightChild);
+		}
 	}
 	//Traverse the tree in an inorder fashion but using a stack
 	public void inOrderStack() {
